@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdul Karim - Portfolio</title>
+  <style>
+    /* Internal CSS */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7; /* Light gray background */
+      color: #333;
+    }
+    header {
+      background-color: #6c5ce7; /* Purple header */
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 20px;
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    nav a {
+      color: #333;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 10px 15px;
+      border-radius: 20px;
+      background-color: #ddd; /* Light gray navigation background */
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    nav a:hover {
+      background-color: #bbb; /* Slightly darker gray on hover */
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 20px;
+    }
+    .project {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+    .project h3 {
+      margin-top: 0;
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #6c5ce7; /* Purple project title */
+    }
+    .project p {
+      color: #666;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+      position: relative;
+      max-width: 600px;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      color: #555;
+      font-size: 24px;
+    }
+    /* Add styles for contact form */
+#contactForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#contactForm input,
+#contactForm textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#contactForm button {
+  padding: 10px 20px;
+  background-color: #6c5ce7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#contactForm button:hover {
+  background-color: #9b59b6;
+}
+
+/* Add styles for skills section */
+#skills ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#skills ul li {
+  margin-bottom: 5px;
+}
+.project {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  overflow: hidden; /* Add this to prevent content overflow */
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.project h3 {
+  margin-top: 0;
+  font-size: 20px; /* Adjusted font size */
+  margin-bottom: 10px;
+  color: #6c5ce7; /* Purple project title */
+}
+
+.project p {
+  color: #666;
+  font-size: 16px; /* Adjusted font size */
+}
+
+/* Add styles for resume download button */
+#resume button {
+  padding: 10px 20px;
+  background-color: #6c5ce7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px; /* Add some top margin for spacing */
+}
+
+#resume button:hover {
+  background-color: #9b59b6;
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Abdul Karim</h1>
+    <p>Web Developer</p>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <div class="container" id="home">
+    <h2>About Me</h2>
+    <p>I am Abdul Karim, an 11th standard student passionate about web development. I have skills in HTML, CSS, and JavaScript.</p>
+  </div>
+   
+  <!-- Add a skills section -->
+  <div class="container" id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <!-- Add more skills here -->
+    </ul>
+  </div>
+  
+  <div class="container" id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project" onclick="openModal('Recipe Finder.', 'Recipe Finder is a web application designed to help you discover and manage your favorite recipes effortlessly. With Recipe Finder, you can browse through a collection of delicious recipes, add your own recipes, and search for specific recipes based on your preferences. \n\n project\'s features: \n 1. Browse Recipes: Explore a variety of recipes displayed in a visually appealing manner, including titles and ingredients. \n 2. Add Recipe: Easily add your own recipes by providing a title and a list of ingredients. \n 3. Search Functionality: Find recipes quickly by using the search bar to filter recipes based on keywords. \n 4. Recipe Details: View detailed information about each recipe, including its title and ingredients, in a convenient pop-up window. \n 5. User-Friendly Interface: Enjoy a simple and intuitive user interface that makes navigating and interacting with the application a breeze. \n\n Whether you\'re looking for inspiration for your next meal or want to keep track of your favorite dishes, Recipe Finder is the perfect tool for any cooking enthusiast. Start exploring and creating delicious recipes today with Recipe Finder!')"> 
+ 
+        <h3>Recipe Finder</h3>
+        <p>Click for description of Recipe Finder.</p>
+      </div>
+      <div class="project" onclick="openModal('Interactive E-Learning Quiz.', 'The Interactive E-Learning Quiz project is designed to offer an engaging learning experience by providing users with an interactive quiz on fundamental web development concepts. The quiz covers topics such as HTML, CSS, and JavaScript. Users can select their answers to each question, and upon submission, the system evaluates their responses, providing immediate feedback on correctness. \n\n project\'s features: \n 1. Structured HTML layout for clear presentation of quiz questions and options. \n 2. Interactive elements such as radio buttons for selecting answers. \n 3. JavaScript functionality for scoring and providing explanations for incorrect answers. \n 4. A countdown timer to add a sense of urgency and challenge to the quiz. \n 5. Responsive design for seamless usage across various devices. \n \n This project serves as an educational tool for individuals interested in learning or reviewing essential concepts in web development. It fosters active participation and knowledge retention through interactive assessments.')">
+        <h3>Interactive E-Learning Quiz</h3>
+        <p>Click for description of Interactive E-Learning Quiz.</p>
+      </div>
+      <!-- Add more projects here -->
+    </div>
+  </div>
+
+  <div class="modal" id="myModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+
+  <!-- Add a button to trigger resume download -->
+<div class="container" id="resume">
+  <h2>Resume</h2>
+  <button onclick="downloadResume()">Download Resume</button>
+</div>
+
+   <!-- Add a new section for contact form -->
+<div class="container" id="contact">
+    <h2>Contact Me</h2>
+    <form id="contactForm" onsubmit="submitForm(event)">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+    
+  <script>
+    // JavaScript code
+    function openModal(title, description) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDescription').innerText = description;
+      document.getElementById('myModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('myModal').style.display = 'none';
+    }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+
+        window.scrollTo({
+          top: target.offsetTop,
+          behavior: 'smooth'
+        });
+      });
+    });
+    function submitForm(event) {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const message = formData.get('message');
+  
+  // Here, you can implement the logic to send the form data (e.g., using fetch API or AJAX)
+  
+  // For demonstration purposes, let's log the form data to the console
+  console.log('Name:', name);
+  console.log('Email:', email);
+  console.log('Message:', message);
+  
+  // Optionally, you can display a confirmation message to the user
+  alert('Your message has been sent! Thank you.');
+  event.target.reset(); // Reset the form
+}
+
+// JavaScript code
+function downloadResume() {
+  // Replace the URL with the publicly accessible link from Google Drive
+  const resumeUrl = 'https://drive.google.com/uc?export=download&id=1s2WUqZLxPXFJ_TG6RerSWF4vAaDEsN-F';
+  
+  // Create a temporary anchor element
+  const anchor = document.createElement('a');
+  anchor.href = resumeUrl;
+  anchor.download = 'Resume.pdf'; // Set the filename for the downloaded file
+  
+  // Append the anchor to the body and trigger the click event
+  document.body.appendChild(anchor);
+  anchor.click();
+  
+  // Remove the anchor from the body
+  document.body.removeChild(anchor);
+}
+
+  </script>
+</body>
+</html>
